@@ -20,22 +20,21 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #86bbd8;
 }
 
 .line {
   position: absolute;
   height: 1vh;
   width: 1000vw;
-  /* min-width: 100vw; */
-  background-color: lightsteelblue;
+  background-color: #86bbd8;
 }
 
 .card {
   position: absolute;
   height: 25vh;
   width: 10vw;
-  background-color: #61dafb;
+  background-color: #86bbd8;
   z-index: 1;
   margin: 6px;
   padding: 6px;
@@ -55,6 +54,94 @@
   border-radius: 50%;
   margin: 6px;
   padding: 6px;
+}
+
+.large-dot {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  background-color: #f26419;
+  z-index: 1;
+  border-radius: 50%;
+  margin: 6px;
+  padding: 6px;
+}
+
+.small-dot {
+  position: sticky;
+  height: 30px;
+  width: 30px;
+  background-color: #282c34;
+  z-index: 2;
+  position: absolute;
+  border-radius: 50%;
+  margin: 6px;
+  padding: 6px;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  visibility: hidden;
+  position: absolute;
+  height: 400px;
+  width: 600px;
+  border: 2px solid #fc5130;
+  background-color: #282c34;
+  top: -600px;
+  border-radius: 5%;
+  margin: 6px;
+  padding: 6px;
+}
+
+.info-card-close-button {
+  position: absolute;
+  cursor: pointer;
+  top: 1px;
+  right: 20px;
+}
+
+.info-card-heading {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.info-card-content {
+  font-size: smaller;
+  margin: 6px;
+  padding: 6px;
+}
+
+.gif-container {
+  position: absolute;
+  display: flex;
+  top: 200px;
+}
+
+.gif-card {
+  height: 400px;
+  width: 400px;
+  border-radius: 5%;
+  margin: 6px;
+  padding: 6px;
+  border: 2px solid #04724d;
+  background-color: #282c34;
+}
+
+.learnings {
+  width: 400px;
+}
+
+ul {
+  list-style-position: outside;
+  display: inline-block;
+  list-style: none;
+}
+
+ul li {
+  margin: 0.4rem;
+  padding-left: 0rem;
 }
 
 .scroll-button {

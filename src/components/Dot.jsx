@@ -1,56 +1,50 @@
-import { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
+import { useState } from 'react';
 
 function DotComponent(props) {
-  let subtitle;
+  const [visibility, setVisibility] = useState('hidden');
+  const [opacity, setOpacity] = useState('0%');
 
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  };
-
-  useEffect(() => {
-    Modal.setAppElement('body');
-  }, []);
-
-  function openModal() {
-    setIsOpen(true);
+  function toggleDiv() {
+    setVisibility(visibility === 'hidden' ? 'visible' : 'hidden');
+    setOpacity(visibility === 'hidden' ? '100%' : '0%');
   }
 
-  function afterOpenModal() {
-    subtitle.style.color = '#f00';
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  const onClick = () => {
-    openModal();
+  const style = {
+    left: `${props.position}px`,
+    visibility: visibility,
+    opacity: opacity,
+    transition: 'all 500ms ease-in',
   };
 
   return (
     <>
-      <div onClick={onClick} className='dot' style={props.style}></div>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel='Project Modal'>
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>{props.info}</h2>
-        <div>Some info about the project I made</div>
-        <button onClick={closeModal}>close</button>
-      </Modal>
+      <div className='info-card' style={style}>
+        <div onClick={toggleDiv} className='info-card-close-button'>
+          x
+        </div>
+        <h3 className='info-card-heading'>{props.info.name}</h3>
+        <div className='info-card-content'>{props.info.description}</div>
+      </div>
+
+      <div
+        onClick={toggleDiv}
+        className='large-dot'
+        style={{ left: `${props.position}px` }}></div>
+      <div
+        onClick={toggleDiv}
+        className='small-dot'
+        style={{ left: `${props.position + 15}px` }}></div>
+
+      <div className='gif-container' style={style}>
+        <div className='gif-card' style={style}></div>
+        <div className='learnings' style={style}>
+          <ul style={style}>
+            {props.info.learnings.map((element) => {
+              return <li key={element}>{element}</li>;
+            })}
+          </ul>
+        </div>
+      </div>
     </>
   );
 }
