@@ -74,7 +74,7 @@ const data = [
     name: 'Cardano NFT Minter',
     date: 'October 2021',
     description:
-      'Created a system which monitors a Cardano address for transactions, verifies the transaction, mints and NFT and sends it back to the originating address. Created a front end advertising a unique NFT project I created in order to learn how to code programs which interact with the Cardano network',
+      'An application which monitors and verifies transactions to a Cardano address and then mints and sends an NFT to the originating address. Front end advertises a unique NFT set created as part of this learning project',
     learnings: ['HTML', 'CSS', 'Petite-Vue', 'Node', 'Firebase', 'Cardano'],
     repo: [
       'https://github.com/Development-Person/nft_minting_server',
