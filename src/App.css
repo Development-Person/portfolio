@@ -1,191 +1,32 @@
 body {
-  overflow-y: hidden;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #282c34;
 }
 
 .App {
+  overflow: hidden;
+  background-color: #282c34;
+}
+
+.grid-container {
+  background-color: #282c34;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  border: 2px solid orangered;
+  font-size: x-large;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-body {
-  background-color: #282c34;
-  height: 100vh;
-  width: 1000vw;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-.App-link {
-  color: #86bbd8;
-}
-
-.line {
-  position: absolute;
-  height: 1vh;
-  width: 1000vw;
-  background-color: #86bbd8;
-}
-
-.card {
-  position: absolute;
-  height: 25vh;
-  width: 10vw;
-  background-color: #86bbd8;
-  z-index: 1;
-  margin: 6px;
-  padding: 6px;
-}
-
-.dot-container {
-  position: absolute;
-  left: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.dot {
-  position: absolute;
-  border-radius: 50%;
-  margin: 6px;
-  padding: 6px;
-}
-
-.large-dot {
-  position: absolute;
-  height: 60px;
-  width: 60px;
-  background-color: #f26419;
-  z-index: 1;
-  border-radius: 50%;
-  margin: 6px;
-  padding: 6px;
-}
-
-.small-dot {
-  position: sticky;
-  height: 30px;
-  width: 30px;
-  background-color: #282c34;
-  z-index: 2;
-  position: absolute;
-  border-radius: 50%;
-  margin: 6px;
-  padding: 6px;
-}
-
-.info-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  visibility: hidden;
-  position: absolute;
-  height: 30rem;
-  width: 35rem;
-  border: 2px solid #fc5130;
-  background-color: #282c34;
-  top: -40rem;
-  border-radius: 5%;
-  margin: 6px;
-  padding: 6px;
-}
-
-.info-card-close-button {
-  position: absolute;
-  cursor: pointer;
-  top: 1px;
-  right: 20px;
-}
-
-.info-card-heading {
-  margin-top: 12px;
-  margin-bottom: 12px;
-}
-
-.info-card-content {
-  margin: 6px;
-  padding: 6px;
-}
-
-.info-card-content,
-h3 {
-  font-size: calc(12px + 1vw);
-}
-
-.info-card-content,
-p {
-  font-size: calc(12px + 0.9vw);
-}
-
-.gif-container {
-  position: absolute;
-  display: flex;
-  top: 200px;
-}
-
-.gif-card {
-  height: 400px;
-  width: 400px;
-  border-radius: 5%;
-  margin: 6px;
-  padding: 6px;
-  border: 2px solid #04724d;
-  background-color: #282c34;
-}
-
-.learnings {
-  width: 400px;
-}
-
-ul {
-  list-style-position: outside;
-  display: inline-block;
-  list-style: none;
-}
-
-ul li {
-  margin: 0.4rem;
-  padding-left: 0rem;
-}
-
-.scroll-button {
-  opacity: 10%;
-  height: 100vh;
-  border: none;
-  width: 10vw;
-  background-color: #282c34;
-  z-index: 2;
-  animation: glowing 2.2s ease-in-out infinite;
-  will-change: transform;
-}
-
-.scroll-button:active {
-  border: none;
-}
-
-@keyframes glowing {
-  0% {
-    background-color: #282c34;
-    box-shadow: 0 0 3px #282c34;
-  }
-  15% {
-    background-color: #4d5564;
-    box-shadow: 0 0 10px #4d5564;
-  }
-  85% {
-    background-color: #4d5564;
-    box-shadow: 0 0 10px #4d5564;
-  }
-  100% {
-    background-color: #282c34;
-    box-shadow: 0 0 3px #282c34;
-  }
 }
