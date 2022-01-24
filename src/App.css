@@ -87,6 +87,10 @@ body {
   background-color: #282c34;
 }
 
+.dot-hidden {
+  opacity: 0%;
+}
+
 @keyframes float1 {
   /* credit zoltan: https://www.useragentman.com/blog/2013/03/03/animating-circular-paths-using-css3-transitions/
   note we dont actually need the second rotates since we are just working with a circle */

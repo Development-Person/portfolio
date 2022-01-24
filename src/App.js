@@ -1,13 +1,17 @@
 import './App.css';
 import GridComponent from './components/Grid';
-import { placeElementsIntoGridSpots } from './functions/gridPlacement';
+import { getGridAllCoordinates } from './functions/gridPlacement';
 import { useEffect, useState } from 'react';
+import { data } from './content/project_descriptions';
 
 function App() {
   const height = window.screen.availHeight;
   const width = window.screen.availWidth;
 
   const [coordinatesArray, setCoordinatesArray] = useState();
+
+  // projects data
+  const projectsArrayLength = data.length;
 
   // determining number of rows based on screen size
   const columnsDivisor = height > 740 ? 120 : 60;
@@ -17,7 +21,7 @@ function App() {
   //placing all elements into grid on page load
   useEffect(() => {
     setCoordinatesArray(
-      placeElementsIntoGridSpots(rows.length, columns.length)
+      getGridAllCoordinates(rows.length, columns.length, projectsArrayLength)
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -26,6 +30,7 @@ function App() {
     <div className='App'>
       <GridComponent
         coordinatesArray={coordinatesArray}
+        projectsArrayLength={projectsArrayLength}
         rows={rows}
         columns={columns}
         width={width}

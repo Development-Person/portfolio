@@ -1,12 +1,13 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import DotComponent from './Dot';
-import { data } from '../content/project_descriptions';
 
 function GridComponent(props) {
   const style = {
     width: `${props.width}px`,
     height: `${props.height}px`,
   };
+
+  const projectsArrayLength = props.projectsArrayLength;
 
   return (
     <Container className='grid-container' style={style}>

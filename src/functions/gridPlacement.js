@@ -4,7 +4,7 @@ function getRandomNumber(length) {
 }
 
 //returns a grid coordinate
-function placeElementIntoGridSpot(rows, columns, coordinatesArray) {
+function getSingleGridElement(rows, columns, coordinatesArray) {
   // gets a random number for the row and column
   const randomRowNumber = getRandomNumber(rows);
   const randomColumnNumber = getRandomNumber(columns);
@@ -17,20 +17,16 @@ function placeElementIntoGridSpot(rows, columns, coordinatesArray) {
     return targetCoordinate;
     // yes = tries again
   } else {
-    return placeElementIntoGridSpot(rows, columns, coordinatesArray);
+    return getSingleGridElement(rows, columns, coordinatesArray);
   }
 }
 
 // returns an array of grid coordinates equal in length to the number of iterations required
-export function placeElementsIntoGridSpots(rows, columns, iterations = 5) {
+export function getGridAllCoordinates(rows, columns, iterations) {
   const coordinatesArray = [];
 
-  for (let i = 0; i <= iterations; i++) {
-    const coordinate = placeElementIntoGridSpot(
-      rows,
-      columns,
-      coordinatesArray
-    );
+  for (let i = 0; i < iterations; i++) {
+    const coordinate = getSingleGridElement(rows, columns, coordinatesArray);
 
     coordinatesArray.push(coordinate);
   }
