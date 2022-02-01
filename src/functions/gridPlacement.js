@@ -26,9 +26,12 @@ export function getGridAllCoordinates(rows, columns, iterations) {
   const coordinatesArray = [];
 
   for (let i = 0; i < iterations; i++) {
-    const coordinate = getSingleGridElement(rows, columns, coordinatesArray);
-
-    coordinatesArray.push(coordinate);
+    if (coordinatesArray.length < rows * columns) {
+      const coordinate = getSingleGridElement(rows, columns, coordinatesArray);
+      coordinatesArray.push(coordinate);
+    } else {
+      console.log(`not enough space!`);
+    }
   }
 
   return coordinatesArray;

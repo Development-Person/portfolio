@@ -1,12 +1,13 @@
 import './App.css';
 import GridComponent from './components/Grid';
+import HeadingComponent from './components/Heading';
 import { getGridAllCoordinates } from './functions/gridPlacement';
 import { useEffect, useState } from 'react';
 import { data } from './content/project_descriptions';
 
 function App() {
-  const height = window.screen.availHeight;
-  const width = window.screen.availWidth;
+  const height = window.screen.availHeight - 200;
+  const width = window.screen.availWidth - 100;
 
   const [coordinatesArray, setCoordinatesArray] = useState();
 
@@ -14,9 +15,9 @@ function App() {
   const projectsArrayLength = data.length;
 
   // determining number of rows based on screen size
-  const columnsDivisor = height > 740 ? 120 : 60;
+  const columnsDivisor = height > 740 ? 100 : 100;
   const columns = Array.from(Array(Math.floor(height / columnsDivisor)).keys());
-  const rows = Array.from(Array(Math.floor(width / 200)).keys());
+  const rows = Array.from(Array(Math.floor(width / 100)).keys());
 
   //placing all elements into grid on page load
   useEffect(() => {
@@ -28,14 +29,17 @@ function App() {
 
   return (
     <div className='App'>
-      <GridComponent
-        coordinatesArray={coordinatesArray}
-        projectsArrayLength={projectsArrayLength}
-        rows={rows}
-        columns={columns}
-        width={width}
-        height={height}
-      />
+      <HeadingComponent />
+      <div className='game' style={{ height: height + 50, width: width + 25 }}>
+        <GridComponent
+          coordinatesArray={coordinatesArray}
+          projectsArrayLength={projectsArrayLength}
+          rows={rows}
+          columns={columns}
+          width={width}
+          height={height}
+        />
+      </div>
     </div>
   );
 }

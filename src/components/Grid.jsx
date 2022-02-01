@@ -7,10 +7,8 @@ function GridComponent(props) {
     height: `${props.height}px`,
   };
 
-  const projectsArrayLength = props.projectsArrayLength;
-
   return (
-    <Container className='grid-container' style={style}>
+    <Container fluid className='grid-container' style={style}>
       {props.rows.map((_el, i) => {
         const row = `R${i + 1}`;
         return (

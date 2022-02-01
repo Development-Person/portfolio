@@ -9,9 +9,24 @@ body {
   background-color: #282c34;
 }
 
+h1 {
+  text-align: center;
+  color: #f4ef88;
+  font-family: 'Orbitron', sans-serif;
+}
+
 .App {
   overflow: hidden;
   background-color: #282c34;
+}
+
+.game {
+  border: 1px solid #ee82ee;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
 
 .grid-container {
@@ -31,8 +46,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5rem;
-  height: 5rem;
+  width: 5em;
+  height: 5em;
+  border: 1px solid #ee82ee;
 }
 
 .dot-animation1 {
@@ -78,7 +94,7 @@ body {
 }
 
 .large-dot {
-  background-color: orangered;
+  background-color: #51e5ff;
 }
 
 .small-dot {
