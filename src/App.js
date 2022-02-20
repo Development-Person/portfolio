@@ -8,24 +8,14 @@ import { useEffect, useState } from 'react';
 function App() {
   const [score, setScore] = useState(0);
 
-  function getDiscoveredElements() {
-    return document.getElementsByClassName('dot-discovered').length;
-  }
-
-  const hiddens = document.getElementsByClassName('dot-hidden');
-
-  for (const hidden of hiddens) {
-    hidden.addEventListener('click', (e) => {
-      e.preventDefault();
-      console.log('hi!');
-      setScore(getDiscoveredElements());
-    });
+  function updateScore() {
+    setScore(score + 1);
   }
 
   return (
     <div className='App'>
       <HeaderComponent score={score} data={data} />
-      <GridComponent data={data} />
+      <GridComponent updateScore={updateScore} data={data} />
       <FooterComponent />
     </div>
   );

@@ -28,6 +28,7 @@ p {
 .footer {
   display: flex;
   flex-direction: column;
+  justify-content: end;
   align-items: center;
 }
 
@@ -72,31 +73,31 @@ p {
   border: 1px solid #ee82ee;
 }
 
-.dot-animation1 {
+.dot-animation1-on {
   animation: float1 4s cubic-bezier(0.1, 0.7, 1, 0.1) infinite;
 }
 
-.dot-animation2 {
+.dot-animation2-on {
   animation: float2 4s linear infinite;
 }
 
-.dot-animation3 {
+.dot-animation3-on {
   animation: float3 6s linear infinite;
 }
 
-.dot-animation4 {
+.dot-animation4-on {
   animation: float4 6s linear infinite;
 }
 
-.dot-animation5 {
+.dot-animation5-on {
   animation: float5 8s linear infinite;
 }
 
-.dot-animation6 {
+.dot-animation6-on {
   animation: float6 10s linear infinite;
 }
 
-.dot-animation7 {
+.dot-animation7-on {
   animation: float7 8s linear infinite;
 }
 

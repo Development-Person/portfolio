@@ -1,16 +1,26 @@
-function DotComponent(props) {
+function DotComponent({ animation, updateScore }) {
   function discoverElement(e) {
     e.preventDefault();
 
-    e.target.classList.remove('dot-hidden');
-    e.target.classList.add('dot-discovered');
+    const animatorDiv = e.target.closest(`.${animation}`);
+    if (animatorDiv) {
+      animatorDiv.classList.remove(`${animation}`);
+      animatorDiv.classList.add(`${animation}-on`);
+    }
+
+    if (e.target.classList.contains('dot-hidden')) {
+      e.target.classList.remove('dot-hidden');
+      updateScore();
+    }
 
     if (e.target.parentNode) {
       if (e.target.parentNode.classList.contains('dot-hidden')) {
         e.target.parentNode.classList.remove('dot-hidden');
+        updateScore();
       } else if (e.target.parentNode.parentNode) {
         if (e.target.parentNode.parentNode.classList.contains('dot-hidden')) {
           e.target.parentNode.parentNode.classList.remove('dot-hidden');
+          updateScore();
         }
       }
     }
@@ -18,10 +28,10 @@ function DotComponent(props) {
 
   return (
     <>
-      <div className={props.animation}>
+      <div className={animation}>
         <div onClick={discoverElement} className='dot dot-hidden'>
-          <div onClick={discoverElement} className='large-dot'>
-            <div onClick={discoverElement} className='small-dot'></div>
+          <div className='large-dot'>
+            <div className='small-dot'></div>
           </div>
         </div>
       </div>

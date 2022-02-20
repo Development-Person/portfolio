@@ -1,6 +1,6 @@
 function ScoreComponent({ score, data }) {
   return (
-    <p className='score'>
+    <p>
       {score} / {data.length}
     </p>
   );
