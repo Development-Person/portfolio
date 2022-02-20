@@ -3,6 +3,7 @@ function DotComponent(props) {
     e.preventDefault();
 
     e.target.classList.remove('dot-hidden');
+    e.target.classList.add('dot-discovered');
 
     if (e.target.parentNode) {
       if (e.target.parentNode.classList.contains('dot-hidden')) {

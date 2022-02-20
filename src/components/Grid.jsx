@@ -1,10 +1,9 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import DotComponent from './Dot';
-import { data } from '../content/project_descriptions';
 import { useEffect, useState } from 'react';
 import { getGridAllCoordinates } from '../functions/gridPlacement';
 
-function GridComponent() {
+function GridComponent({ data }) {
   const screenWidth = window.screen.availWidth;
   const screenHeight = window.screen.availHeight;
 
@@ -41,7 +40,7 @@ function GridComponent() {
   return (
     <>
       <div
-        className='game'
+        className='game mt-3'
         style={{ height: gridHeight + 5, width: gridWidth + 5 }}>
         <Container fluid className='grid-container' style={style}>
           {rows.map((_el, i) => {
