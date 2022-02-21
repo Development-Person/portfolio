@@ -18,6 +18,7 @@ function App() {
 
   return (
     <div className='App'>
+      <div className='cursor'></div>
       <HeaderComponent score={score} data={data} />
       <GridComponent
         updateScore={updateScore}

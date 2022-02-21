@@ -1,4 +1,4 @@
-function DotComponent({ animation, updateScore }) {
+function DotComponent({ animation, updateScore, addDiscoverAnimation }) {
   function discoverElement(e) {
     e.preventDefault();
 
@@ -10,16 +10,19 @@ function DotComponent({ animation, updateScore }) {
 
     if (e.target.classList.contains('dot-hidden')) {
       e.target.classList.remove('dot-hidden');
+      addDiscoverAnimation(true);
       updateScore();
     }
 
     if (e.target.parentNode) {
       if (e.target.parentNode.classList.contains('dot-hidden')) {
         e.target.parentNode.classList.remove('dot-hidden');
+        addDiscoverAnimation(true);
         updateScore();
       } else if (e.target.parentNode.parentNode) {
         if (e.target.parentNode.parentNode.classList.contains('dot-hidden')) {
           e.target.parentNode.parentNode.classList.remove('dot-hidden');
+          addDiscoverAnimation(true);
           updateScore();
         }
       }

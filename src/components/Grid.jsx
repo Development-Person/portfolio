@@ -96,6 +96,8 @@ function GridComponent({ data, updateScore, resetScore }) {
   ]);
 
   //placing all elements into grid on page load
+  const cursor = document.querySelector('.cursor');
+
   useEffect(() => {
     setUp();
 
@@ -117,6 +119,55 @@ function GridComponent({ data, updateScore, resetScore }) {
     width: `${gridDimensions.gridWidth}px`,
     height: `${gridDimensions.gridHeight}px`,
   };
+
+  document.addEventListener('mousemove', (e) => {
+    if (cursor) {
+      cursor.setAttribute(
+        'style',
+        'top: ' + (e.pageY - 30) + 'px; left: ' + (e.pageX - 30) + 'px;'
+      );
+    }
+  });
+
+  document.addEventListener('click', () => {
+    if (cursor) {
+      cursor.classList.add('expand');
+
+      setTimeout(() => {
+        cursor.classList.remove('expand');
+      }, 500);
+    }
+  });
+
+  function handleClick(discovered = false) {
+    if (discovered === true) {
+      cursor.classList.add('expand-discover');
+
+      setTimeout(() => {
+        cursor.classList.remove('expand-discover');
+      }, 500);
+    }
+
+    if (discovered === false) {
+      cursor.classList.add('expand');
+
+      setTimeout(() => {
+        cursor.classList.remove('expand');
+      }, 500);
+    }
+  }
+
+  function addDiscoverAnimation(discovered = false) {
+    document.removeEventListener('click', handleClick);
+
+    if (discovered === true) {
+      document.addEventListener('click', handleClick(true));
+    }
+
+    if (discovered === false) {
+      document.addEventListener('click', handleClick(false));
+    }
+  }
 
   return (
     <>
@@ -143,6 +194,7 @@ function GridComponent({ data, updateScore, resetScore }) {
                           <DotComponent
                             key={column}
                             updateScore={updateScore}
+                            addDiscoverAnimation={addDiscoverAnimation}
                             animation={
                               animationsArray[coordinatesArray.indexOf(column)]
                             }
