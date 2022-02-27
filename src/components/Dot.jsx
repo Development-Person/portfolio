@@ -1,6 +1,36 @@
 import { isTouchScreenDevice } from '../functions/isTouchScreenDevice';
+import { useState } from 'react';
+import Modal from 'react-modal';
+import CardComponent from './Card';
 
-function DotComponent({ animation, updateScore, addDiscoverAnimation }) {
+function DotComponent({ data, animation, updateScore, addDiscoverAnimation }) {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+  Modal.setAppElement('.App');
+
+  function openModal() {
+    console.log('openModal function triggered');
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    return;
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   function discoverElement(e) {
     e.preventDefault();
 
@@ -16,6 +46,8 @@ function DotComponent({ animation, updateScore, addDiscoverAnimation }) {
           animatorDiv.classList.remove('expand-discover-touch');
         }, 400);
       }
+
+      openModal();
     }
 
     if (e.target.classList.contains('dot-hidden')) {
@@ -44,7 +76,17 @@ function DotComponent({ animation, updateScore, addDiscoverAnimation }) {
       <div className={animation}>
         <div onClick={discoverElement} className='dot dot-hidden'>
           <div className='large-dot'>
-            <div className='small-dot'></div>
+            <div className='small-dot'>
+              <Modal
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel='Example Modal'>
+                <button onClick={closeModal}>close</button>
+                <CardComponent data={data} />
+              </Modal>
+            </div>
           </div>
         </div>
       </div>

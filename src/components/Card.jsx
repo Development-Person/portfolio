@@ -1,7 +1,8 @@
-function CardComponent(props) {
+function CardComponent({ data }) {
   return (
-    <div className='card' style={props.style}>
-      {props.name}
+    <div className='card'>
+      <h2>{data.name}</h2>
+      <div>{data.description}</div>
     </div>
   );
 }
