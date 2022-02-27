@@ -1,3 +1,5 @@
+import { isTouchScreenDevice } from '../functions/isTouchScreenDevice';
+
 function DotComponent({ animation, updateScore, addDiscoverAnimation }) {
   function discoverElement(e) {
     e.preventDefault();
@@ -6,6 +8,14 @@ function DotComponent({ animation, updateScore, addDiscoverAnimation }) {
     if (animatorDiv) {
       animatorDiv.classList.remove(`${animation}`);
       animatorDiv.classList.add(`${animation}-on`);
+
+      if (isTouchScreenDevice()) {
+        animatorDiv.classList.add('expand-discover-touch');
+
+        setTimeout(() => {
+          animatorDiv.classList.remove('expand-discover-touch');
+        }, 400);
+      }
     }
 
     if (e.target.classList.contains('dot-hidden')) {

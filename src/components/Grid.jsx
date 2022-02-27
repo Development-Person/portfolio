@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { getGridAllCoordinates } from '../functions/gridPlacement';
 import { animationSelector } from '../functions/animationSelector';
 
-function GridComponent({ data, updateScore, resetScore }) {
+function GridComponent({ data, updateScore, resetScore, isTouchScreenDevice }) {
   const [screenDimensions, setScreenDimensions] = useState({
     screenWidth: window.innerWidth,
     screenHeight: window.innerHeight,
@@ -158,14 +158,18 @@ function GridComponent({ data, updateScore, resetScore }) {
   }
 
   function addDiscoverAnimation(discovered = false) {
-    document.removeEventListener('click', handleClick);
+    if (isTouchScreenDevice()) {
+      return;
+    } else {
+      document.removeEventListener('click', handleClick);
 
-    if (discovered === true) {
-      document.addEventListener('click', handleClick(true));
-    }
+      if (discovered === true) {
+        document.addEventListener('click', handleClick(true));
+      }
 
-    if (discovered === false) {
-      document.addEventListener('click', handleClick(false));
+      if (discovered === false) {
+        document.addEventListener('click', handleClick(false));
+      }
     }
   }
 

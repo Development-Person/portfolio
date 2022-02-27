@@ -13,13 +13,15 @@ function FooterComponent(props) {
         <a
           href='https://github.com/Development-Person/'
           target='_blank'
-          className='social p-2 pt-0 pb-0'>
+          className='social p-2 pt-0 pb-0'
+          rel='noreferrer'>
           {gitHub}
         </a>
         <a
           href='https://www.linkedin.com/in/ibrahimak/'
           target='_blank'
-          className='social p-2 pt-0 pb-0'>
+          className='social p-2 pt-0 pb-0'
+          rel='noreferrer'>
           {linkedIn}
         </a>
       </div>

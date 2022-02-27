@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import './App.css';
 import GridComponent from './components/Grid';
 import HeaderComponent from './components/Header';
 import FooterComponent from './components/Footer';
 import { data } from './content/project_descriptions';
-import { useState } from 'react';
+import { isTouchScreenDevice } from './functions/isTouchScreenDevice';
 
 function App() {
   const [score, setScore] = useState(0);
@@ -18,9 +19,10 @@ function App() {
 
   return (
     <div className='App'>
-      <div className='cursor'></div>
+      {isTouchScreenDevice() ? '' : <div className='cursor'></div>}
       <HeaderComponent score={score} data={data} />
       <GridComponent
+        isTouchScreenDevice={isTouchScreenDevice}
         updateScore={updateScore}
         resetScore={resetScore}
         data={data}
