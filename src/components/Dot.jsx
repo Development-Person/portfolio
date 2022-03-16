@@ -1,34 +1,13 @@
 import { isTouchScreenDevice } from '../functions/isTouchScreenDevice';
 import { useState } from 'react';
-import Modal from 'react-modal';
+import { Modal, Container, Row, Col, Badge, Nav } from 'react-bootstrap';
 import CardComponent from './Card';
 
 function DotComponent({ data, animation, updateScore, addDiscoverAnimation }) {
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  };
-  Modal.setAppElement('.App');
+  const [modalShow, setModalShow] = useState(false);
 
   function openModal() {
-    console.log('openModal function triggered');
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    return;
-  }
-
-  function closeModal() {
-    setIsOpen(false);
+    setModalShow(true);
   }
 
   function discoverElement(e) {
@@ -73,20 +52,66 @@ function DotComponent({ data, animation, updateScore, addDiscoverAnimation }) {
 
   return (
     <>
+      <Modal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        size='lg'
+        aria-labelledby='contained-modal-title-vcenter'
+        centered>
+        <Modal.Header closeButton>
+          <Modal.Title id='contained-modal-title-vcenter'>
+            {data.name}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className='learnings'>
+            {data.learnings.map((learning) => {
+              return (
+                <div className='pill-wrapper' key={learning} xs={3} md={2}>
+                  <Badge pill bg='primary' key={learning}>
+                    {learning}
+                  </Badge>
+                </div>
+              );
+            })}
+          </div>
+          <div className='date-description-wrapper'>
+            <h6>Built in: {data.date}</h6>
+            <div className='description'>
+              <h6>Description:</h6>
+              <p>{data.description}</p>
+            </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <div className='info'>
+            {data.repo.map((repo) => {
+              return (
+                <a
+                  className='link-info'
+                  key={repo}
+                  href={repo}
+                  target='_blank'
+                  rel='noreferrer'>
+                  Repo
+                </a>
+              );
+            })}
+            <a
+              className='link-info'
+              key={data.url}
+              href={data.url}
+              target='_blank'
+              rel='noreferrer'>
+              Web
+            </a>
+          </div>
+        </Modal.Footer>
+      </Modal>
       <div className={animation}>
         <div onClick={discoverElement} className='dot dot-hidden'>
           <div className='large-dot'>
-            <div className='small-dot'>
-              <Modal
-                isOpen={modalIsOpen}
-                onAfterOpen={afterOpenModal}
-                onRequestClose={closeModal}
-                style={customStyles}
-                contentLabel='Example Modal'>
-                <button onClick={closeModal}>close</button>
-                <CardComponent data={data} />
-              </Modal>
-            </div>
+            <div className='small-dot'></div>
           </div>
         </div>
       </div>
