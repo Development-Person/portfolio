@@ -7,7 +7,9 @@ function DotComponent({ data, animation, updateScore, addDiscoverAnimation }) {
   const [modalShow, setModalShow] = useState(false);
 
   function openModal() {
-    setModalShow(true);
+    setTimeout(() => {
+      setModalShow(true);
+    }, 700);
   }
 
   function discoverElement(e) {
@@ -64,31 +66,46 @@ function DotComponent({ data, animation, updateScore, addDiscoverAnimation }) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className='learnings'>
-            {data.learnings.map((learning) => {
-              return (
-                <div className='pill-wrapper' key={learning} xs={3} md={2}>
-                  <Badge pill bg='primary' key={learning}>
-                    {learning}
-                  </Badge>
+          <div className='information-image-wrapper'>
+            <div className='information'>
+              <div className='description'>
+                <h6>Technologies:</h6>
+                <div className='learnings'>
+                  {data.learnings.map((learning) => {
+                    return (
+                      <Badge
+                        pill
+                        bg='custom-purple'
+                        className='technology-pill'
+                        key={learning}>
+                        {learning}
+                      </Badge>
+                    );
+                  })}
                 </div>
-              );
-            })}
-          </div>
-          <div className='date-description-wrapper'>
-            <h6>Built in: {data.date}</h6>
-            <div className='description'>
-              <h6>Description:</h6>
-              <p>{data.description}</p>
+              </div>
+              <div className='date-description-wrapper'>
+                <div className='description'>
+                  <h6>Built in:</h6>
+                  <p>{data.date}</p>
+                </div>
+                <div className='description'>
+                  <h6>Description:</h6>
+                  <p>{data.description}</p>
+                </div>
+              </div>
+            </div>
+            <div className='project-image'>
+              <img className='image' src={data.image} alt={data.name}></img>
             </div>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <div className='info'>
+          <div className='footer-links'>
             {data.repo.map((repo) => {
               return (
                 <a
-                  className='link-info'
+                  className='footer-link'
                   key={repo}
                   href={repo}
                   target='_blank'
@@ -98,7 +115,7 @@ function DotComponent({ data, animation, updateScore, addDiscoverAnimation }) {
               );
             })}
             <a
-              className='link-info'
+              className='footer-link'
               key={data.url}
               href={data.url}
               target='_blank'
@@ -110,8 +127,8 @@ function DotComponent({ data, animation, updateScore, addDiscoverAnimation }) {
       </Modal>
       <div className={animation}>
         <div onClick={discoverElement} className='dot dot-hidden'>
-          <div className='large-dot'>
-            <div className='small-dot'></div>
+          <div onClick={openModal} className='large-dot'>
+            <div onClick={openModal} className='small-dot'></div>
           </div>
         </div>
       </div>

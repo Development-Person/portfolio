@@ -16,6 +16,7 @@ const data = [
     ],
     repo: ['https://github.com/Development-Person/ProShop'],
     url: '',
+    image: '',
   },
   {
     name: 'Borrow Yours',
@@ -34,6 +35,7 @@ const data = [
     ],
     repo: ['https://github.com/Development-Person/BorrowYours'],
     url: 'www.test.com',
+    image: '',
   },
   {
     name: 'CSV Parser',
@@ -51,6 +53,7 @@ const data = [
     ],
     repo: ['https://github.com/Development-Person/csv-parser'],
     url: 'https://google.com',
+    image: '',
   },
   {
     name: 'Set Designer',
@@ -69,6 +72,7 @@ const data = [
     learnings: ['HTML', 'CSS', 'Javascript', 'Fetch', 'APIs'],
     repo: ['https://github.com/Development-Person/pigeons'],
     url: '',
+    image: '',
   },
   {
     name: 'Cardano NFT Minter',
@@ -81,6 +85,7 @@ const data = [
       'https://github.com/Development-Person/nft_firebase',
     ],
     url: 'https://treatdeliverysystem.com/',
+    image: '',
   },
   {
     name: 'Tweet Competition',
@@ -99,6 +104,7 @@ const data = [
     ],
     repo: ['https://github.com/Development-Person/tweet_analyzer'],
     url: 'https://tweetcomp.herokuapp.com/',
+    image: 'tweetcomp.jpg',
   },
   {
     name: 'From the Ground Up',
@@ -117,6 +123,7 @@ const data = [
     ],
     repo: ['https://github.com/Development-Person/from_the_ground_up'],
     url: 'http://www.learnfromthegroundup.com/',
+    image: 'ftgu.jpg',
   },
 ];
 
