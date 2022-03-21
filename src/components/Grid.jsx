@@ -196,6 +196,7 @@ function GridComponent({ data, updateScore, resetScore, isTouchScreenDevice }) {
                         {coordinatesArray &&
                         coordinatesArray.includes(column) ? (
                           <DotComponent
+                            data={data[coordinatesArray.indexOf(column)]}
                             key={column}
                             updateScore={updateScore}
                             addDiscoverAnimation={addDiscoverAnimation}

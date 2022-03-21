@@ -275,3 +275,92 @@ p {
     opacity: 0;
   }
 }
+
+.close-button {
+  width: 50px;
+  height: 50px;
+}
+
+.description p {
+  text-align: left;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.learnings {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+.technology-pill {
+  margin-top: 4px;
+  margin-right: 4px;
+}
+
+.date-description-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+}
+
+.bg-custom-purple {
+  --bs-bg-opacity: 1;
+  background-color: #b607b6 !important;
+}
+
+.modal-content {
+  background-color: #282c34;
+}
+
+.modal-content {
+  color: white;
+}
+
+.modal-header {
+  border-bottom: 1px solid #f4ef88;
+}
+
+.modal-footer {
+  border-top: 1px solid #f4ef88;
+}
+
+.btn-close {
+  opacity: 1;
+  background-color: #b607b6;
+}
+
+.information-image-wrapper {
+  display: flex;
+}
+
+.information {
+  flex: 1 1 50%;
+}
+
+.project-image {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  max-width: 100%;
+}
+
+.footer-links {
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-link {
+  color: #b607b6;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: left;
+}
