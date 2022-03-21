@@ -1,7 +1,6 @@
 import { isTouchScreenDevice } from '../functions/isTouchScreenDevice';
 import { useState } from 'react';
-import { Modal, Container, Row, Col, Badge, Nav } from 'react-bootstrap';
-import CardComponent from './Card';
+import { Modal, Badge } from 'react-bootstrap';
 
 function DotComponent({ data, animation, updateScore, addDiscoverAnimation }) {
   const [modalShow, setModalShow] = useState(false);
