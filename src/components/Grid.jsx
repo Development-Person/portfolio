@@ -192,9 +192,8 @@ function GridComponent({ data, updateScore, resetScore, isTouchScreenDevice }) {
                     <Col
                       key={column}
                       style={{ display: 'flex', justifyContent: 'center' }}>
-                      <div id={column} className='empty box p-3 m-3'>
-                        {coordinatesArray &&
-                        coordinatesArray.includes(column) ? (
+                      {coordinatesArray && coordinatesArray.includes(column) ? (
+                        <div id={column} className='full box p-3 m-3'>
                           <DotComponent
                             data={data[coordinatesArray.indexOf(column)]}
                             key={column}
@@ -204,10 +203,12 @@ function GridComponent({ data, updateScore, resetScore, isTouchScreenDevice }) {
                               animationsArray[coordinatesArray.indexOf(column)]
                             }
                           />
-                        ) : (
-                          ''
-                        )}
-                      </div>
+                        </div>
+                      ) : (
+                        <div id={column} className='empty box p-3 m-3'>
+                          {' '}
+                        </div>
+                      )}
                     </Col>
                   );
                 })}
