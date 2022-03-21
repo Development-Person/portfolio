@@ -34,8 +34,8 @@ const data = [
       'Github',
     ],
     repo: ['https://github.com/Development-Person/BorrowYours'],
-    url: 'www.test.com',
-    image: '',
+    url: '',
+    image: 'borrowyours.jpg',
   },
   {
     name: 'CSV Parser',
@@ -52,8 +52,8 @@ const data = [
       'SQL',
     ],
     repo: ['https://github.com/Development-Person/csv-parser'],
-    url: 'https://google.com',
-    image: '',
+    url: '',
+    image: 'csvparser.jpg',
   },
   {
     name: 'Set Designer',
@@ -63,6 +63,7 @@ const data = [
     learnings: ['HTML', 'CSS', 'Javascript', 'Audio'],
     repo: ['https://github.com/Development-Person/SetDesigner'],
     url: '',
+    image: 'setdesigner.jpg',
   },
   {
     name: 'Pigeons!',
@@ -85,7 +86,7 @@ const data = [
       'https://github.com/Development-Person/nft_firebase',
     ],
     url: 'https://treatdeliverysystem.com/',
-    image: '',
+    image: 'cardanominter.jpg',
   },
   {
     name: 'Tweet Competition',
