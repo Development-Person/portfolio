@@ -15,8 +15,8 @@ const data = [
       'Github',
     ],
     repo: ['https://github.com/Development-Person/ProShop'],
-    url: '',
-    image: '',
+    url: 'https://proshopbyiba.herokuapp.com/',
+    image: 'proshop.jpg',
   },
   {
     name: 'Borrow Yours',
@@ -72,7 +72,7 @@ const data = [
     learnings: ['HTML', 'CSS', 'Javascript', 'Fetch', 'APIs'],
     repo: ['https://github.com/Development-Person/pigeons'],
     url: '',
-    image: '',
+    image: 'pigeons.jpg',
   },
   {
     name: 'Cardano NFT Minter',
