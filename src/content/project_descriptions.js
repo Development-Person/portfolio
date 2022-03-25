@@ -92,7 +92,7 @@ const data = [
     name: 'Tweet Competition',
     date: 'November 2021',
     description:
-      "Built a full stack app to run twitter like and follow competitions. User enters a tweet URL, backend then queries the Twitter API for information about a tweet and selects a winner based on the user's selections.",
+      "A full stack app to run twitter like and follow competitions. User enters a tweet URL, backend then queries the Twitter API for information about a tweet and selects a winner based on the user's selections.",
     learnings: [
       'HTML',
       'CSS',

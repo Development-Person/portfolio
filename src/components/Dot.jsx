@@ -113,14 +113,18 @@ function DotComponent({ data, animation, updateScore, addDiscoverAnimation }) {
                 </a>
               );
             })}
-            <a
-              className='footer-link'
-              key={data.url}
-              href={data.url}
-              target='_blank'
-              rel='noreferrer'>
-              Web
-            </a>
+            {data.url ? (
+              <a
+                className='footer-link'
+                key={data.url}
+                href={data.url}
+                target='_blank'
+                rel='noreferrer'>
+                Web
+              </a>
+            ) : (
+              ''
+            )}
           </div>
         </Modal.Footer>
       </Modal>
