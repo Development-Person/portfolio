@@ -5,61 +5,35 @@ import { getGridAllCoordinates } from '../functions/gridPlacement';
 import { animationSelector } from '../functions/animationSelector';
 
 function GridComponent({ data, updateScore, resetScore, isTouchScreenDevice }) {
-  const [screenDimensions, setScreenDimensions] = useState({
-    screenWidth: window.innerWidth,
-    screenHeight: window.innerHeight,
-  });
-  const [gridDimensions, setGridDimensions] = useState({
-    gridWidth:
-      screenDimensions.screenWidth < 500
-        ? screenDimensions.screenWidth - 50
-        : screenDimensions.screenWidth - 200,
-    gridHeight:
-      screenDimensions.screenHeight < 700
-        ? screenDimensions.screenHeight - 200
-        : screenDimensions.screenHeight - 400,
-  });
-  const [coordinatesArray, setCoordinatesArray] = useState();
-  const [animationsArray, setAnimationsArray] = useState();
-  const [divisors, setDivisors] = useState({
-    rowsDivisor: screenDimensions.screenWidth >= 912 ? 120 : 100,
-    columnsDivisor: screenDimensions.screenHeight > 740 ? 120 : 100,
-  });
-  const [grid, SetGrid] = useState({
-    columns: Array.from(
-      Array(
-        Math.floor(gridDimensions.gridHeight / divisors.columnsDivisor)
-      ).keys()
-    ),
-    rows: Array.from(
-      Array(Math.floor(gridDimensions.gridWidth / divisors.rowsDivisor)).keys()
-    ),
-  });
+  function screenDimensionsSetter() {
+    return {
+      screenWidth: window.innerWidth,
+      screenHeight: window.innerHeight,
+    };
+  }
 
-  // projects data
-  const [projectsArrayLength] = useState(data.length);
-
-  //auto-resizing function
-  const setUp = useCallback(() => {
-    resetScore();
-
-    setGridDimensions({
+  function gridDimensionsSetter() {
+    return {
       gridWidth:
         screenDimensions.screenWidth < 500
           ? screenDimensions.screenWidth - 50
           : screenDimensions.screenWidth - 200,
       gridHeight:
-        screenDimensions.screenHeight < 700
+        screenDimensions.screenHeight < 1000
           ? screenDimensions.screenHeight - 200
           : screenDimensions.screenHeight - 400,
-    });
+    };
+  }
 
-    setDivisors({
-      rowsDivisor: screenDimensions.screenWidth >= 912 ? 120 : 100,
-      columnsDivisor: screenDimensions.screenHeight > 740 ? 120 : 100,
-    });
+  function divisorsSetter() {
+    return {
+      rowsDivisor: screenDimensions.screenWidth >= 912 ? 120 : 105,
+      columnsDivisor: screenDimensions.screenHeight > 745 ? 120 : 100,
+    };
+  }
 
-    SetGrid({
+  function gridSetter() {
+    return {
       columns: Array.from(
         Array(
           Math.floor(gridDimensions.gridHeight / divisors.columnsDivisor)
@@ -70,7 +44,43 @@ function GridComponent({ data, updateScore, resetScore, isTouchScreenDevice }) {
           Math.floor(gridDimensions.gridWidth / divisors.rowsDivisor)
         ).keys()
       ),
-    });
+    };
+  }
+
+  //get screen width and height
+  const [screenDimensions, setScreenDimensions] = useState(
+    screenDimensionsSetter()
+  );
+
+  //1. build a grid based on screen width and height
+  //1a. remove some width and height to make sure the squares stay inside the large square
+  const [gridDimensions, setGridDimensions] = useState(gridDimensionsSetter());
+
+  //1b. set a divisor based on the screen width and height, larger width/height will be diveded by a
+  //larger number, therefore yielding less columns/rows than they would otherwise
+  const [divisors, setDivisors] = useState(divisorsSetter());
+
+  //1c. creating a grid based on the dimensions of the screen and the divisor
+  //the bigger the screen the bigger the grid, and the more squares.
+  //the goal is to end up a grid with the same density of squares no matter the size.
+  const [grid, SetGrid] = useState(gridSetter());
+
+  const [coordinatesArray, setCoordinatesArray] = useState();
+  const [animationsArray, setAnimationsArray] = useState();
+
+  // projects data
+  const [projectsArrayLength] = useState(data.length);
+
+  //auto-resizing function - this gets called every time the resize event listener is triggered
+  const setUp = useCallback(() => {
+    // new grid means new placement, so new score
+    resetScore();
+
+    setGridDimensions(gridDimensionsSetter());
+
+    setDivisors(divisorsSetter());
+
+    SetGrid(gridSetter());
 
     setCoordinatesArray(
       getGridAllCoordinates(
@@ -99,8 +109,10 @@ function GridComponent({ data, updateScore, resetScore, isTouchScreenDevice }) {
   const cursor = document.querySelector('.cursor');
 
   useEffect(() => {
+    //setup is called to create a grid that responds to the screen size
     setUp();
 
+    //resize function just resets the screen dimensions, which calls the setup function
     function handleResize() {
       setScreenDimensions({
         screenWidth: window.innerWidth,
@@ -108,9 +120,11 @@ function GridComponent({ data, updateScore, resetScore, isTouchScreenDevice }) {
       });
     }
 
+    //event listener is added
     window.addEventListener('resize', handleResize);
 
     return () => {
+      //event listener is cleaned up if navigates away from page (not an issue here but good practice)
       window.removeEventListener('resize', handleResize);
     };
   }, [setUp]);
