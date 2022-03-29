@@ -12,6 +12,10 @@ body {
   position: relative;
 }
 
+#root {
+  overflow: hidden;
+}
+
 h1,
 p {
   text-align: center;
