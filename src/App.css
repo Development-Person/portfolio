@@ -12,6 +12,8 @@ body {
 #root {
   overflow: hidden;
   position: fixed;
+  max-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  max-height: calc(var(--vh, 1vh) * 100);
   width: 100%;
 }
 
