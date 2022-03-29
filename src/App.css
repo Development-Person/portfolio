@@ -410,7 +410,7 @@ p {
     max-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
     max-height: calc(var(--vh, 1vh) * 100);
     position: absolute;
-    top: 10%;
+    top: 35%;
   }
 
   .App {
