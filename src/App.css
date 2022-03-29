@@ -34,7 +34,8 @@ p {
 
 .App {
   display: flex;
-  height: 100vh;
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -333,11 +334,14 @@ p {
   background-color: #b607b6 !important;
 }
 
-.modal-content {
-  background-color: #282c34;
+.modal-dialog {
+  max-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  max-height: calc(var(--vh, 1vh) * 100);
+  margin: 0;
 }
 
 .modal-content {
+  background-color: #282c34;
   color: white;
 }
 
@@ -347,6 +351,8 @@ p {
 
 .modal-footer {
   border-top: 1px solid #f4ef88;
+  display: flex;
+  justify-content: left;
 }
 
 .btn-close {
@@ -381,11 +387,6 @@ p {
 
 .footer-link {
   color: #b607b6;
-}
-
-.modal-footer {
-  display: flex;
-  justify-content: left;
 }
 
 @media (max-width: 1000px) {
