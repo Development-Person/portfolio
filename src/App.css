@@ -342,12 +342,6 @@ p {
   background-color: #b607b6 !important;
 }
 
-.modal-dialog {
-  max-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  max-height: calc(var(--vh, 1vh) * 100);
-  margin: 0;
-}
-
 .modal-content {
   background-color: #282c34;
   color: white;
@@ -408,9 +402,13 @@ p {
 
   .modal {
     max-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-    max-height: calc(var(--vh, 1vh) * 100);
+    max-height: calc(var(--vh, 1vh) * 90);
+  }
+
+  .modal-dialog {
+    max-height: 100%;
     position: absolute;
-    top: 35%;
+    top: 15%;
   }
 
   .App {
