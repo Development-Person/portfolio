@@ -4,16 +4,15 @@
 
 html,
 body {
-  overflow: hidden;
   margin: 0;
   padding: 0;
   background-color: #282c34;
-  width: 100%;
-  position: relative;
 }
 
 #root {
   overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 
 h1,
