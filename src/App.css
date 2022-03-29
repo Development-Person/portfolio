@@ -2,11 +2,14 @@
   --animation-direction: 360deg;
 }
 
+html,
 body {
   overflow: hidden;
   margin: 0;
   padding: 0;
   background-color: #282c34;
+  width: 100%;
+  position: relative;
 }
 
 h1,
@@ -396,5 +399,15 @@ p {
 
   .footer-links {
     width: 35%;
+  }
+
+  .modal-dialog {
+    max-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    max-height: calc(var(--vh, 1vh) * 98);
+  }
+
+  .App {
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 98);
   }
 }
